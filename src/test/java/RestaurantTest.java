@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,4 +69,17 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // Failing Test Case
+    @Test
+    public void calculateOrderValue_should_return_total_order_value_of_the_items_selected_from_menu_which_is_740() {
+        List<Item> itemsList = new ArrayList<>();
+        Item item1 = new Item("Chicken Biriyani",300);
+        itemsList.add(item1);
+        Item item2 = new Item("Chicken Butter Masala",320);
+        itemsList.add(item2);
+        Item item3 = new Item("Garlic Naan",120);
+        itemsList.add(item3);
+        assertEquals(740, restaurant.calculateOrderValue(itemsList));
+    }
+
 }
